@@ -1,0 +1,11 @@
+npm create vite@latest
+npm install  
+npm install -D tailwindcss postcss autoprefixer 
+npx tailwind init -p   
+npm i react-icons
+npm i aos --save     //Para intalar las animaciones de ract o de node.js
+
+importante configurar el index.css  // Para qu coja los css
+y tambien el tailwind
+
+
