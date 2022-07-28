@@ -16,7 +16,7 @@ clave = "Crbrr04$"
 
 
 
-viajesdictionary = [""]
+viajesdictionary = []
 pickup = ""
 delivery = ""
 numvehicles = ""
@@ -61,16 +61,21 @@ while (True):
     try:
         carreras = driver.find_element(By.TAG_NAME, 'tbody').find_elements(By.TAG_NAME, 'tr')
         print(len(carreras))
-        for x in carreras:
-            a =carreras[0].find_elements(By.TAG_NAME, 'a')
-            pickup = a[0].get_attribute("text")
-            delivery = a[1].get_attribute("text")
-            numvehicles = a[3].get_attribute("text")
-            telefon = a[6].get_attribute("text")
-            message = pickup + " -- " + delivery + " -- " + numvehicles + " -- " + telefon
-                
-            if message not in viajesdictionary or cantCarreras == 0:
-                viajesdictionary[cantCarreras] = message
+        for x in carreras) :
+            try:
+
+                a = x.find_elements(By.TAG_NAME, 'a')
+                pickup = a[0].get_attribute("text")
+                delivery = a[1].get_attribute("text")
+                numvehicles = a[3].get_attribute("text")
+                telefon = a[6].get_attribute("text")
+                message = pickup + " -- " + delivery + " -- " + numvehicles + " -- " + telefon
+                print(pickup)
+            except :
+                print(f"Error  con la carrera {x}")
+            if message not in viajesdictionary:
+                viajesdictionary.append (message)
+                print("entro aqui")
                 cantCarreras = cantCarreras+1
                 flag = True
 
@@ -97,5 +102,6 @@ while (True):
 
     except:
         print("Nada Nuevo")
+    time.sleep(10)
     driver.refresh()
     time.sleep(10)
